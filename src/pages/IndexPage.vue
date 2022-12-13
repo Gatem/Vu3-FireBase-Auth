@@ -12,6 +12,12 @@
           class="full-width text-subtitle1"
           @click="logOut"
         />
+        <q-btn
+          color="secondary"
+          label="logAout"
+          class="full-width text-subtitle1"
+          @click="logAout"
+        />
       </div>
     </div>
   </q-page>
@@ -19,5 +25,5 @@
 
 <script setup>
 import { useGlobalStore } from "src/stores/global-store";
-const { logOut } = useGlobalStore();
+const { logOut, logAout } = useGlobalStore();
 </script>

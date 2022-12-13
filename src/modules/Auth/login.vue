@@ -46,9 +46,6 @@ import { useGlobalStore } from "src/stores/global-store";
 import { storeToRefs } from "pinia";
 const password = ref("");
 const email = ref("");
-const { login } = useGlobalStore();
+const { login, signInWithGoogle } = useGlobalStore();
 const { errMsg } = storeToRefs(useGlobalStore());
-const signInWithGoogle = () => {
-  // alertData("Works");
-};
 </script>
