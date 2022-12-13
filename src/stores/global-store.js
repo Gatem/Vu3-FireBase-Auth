@@ -3,6 +3,8 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
   signOut,
 } from "firebase/auth";
 import { ref } from "vue";
@@ -27,19 +29,32 @@ export const useGlobalStore = defineStore("global", () => {
       .then((data) => {
         setProfile(data._tokenResponse);
         errMsg.value = "";
+        this.router.push("/home");
       })
       .catch((err) => {
-        console.log("Error : ", err.message);
         errMsg.value = err.message;
       });
   }
-
+  function signInWithGoogle() {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(getAuth(), provider)
+      .then((data) => {
+        setProfile(data._tokenResponse);
+        errMsg.value = "";
+        this.router.push("/home");
+      })
+      .catch((err) => {
+        errMsg.value = err.message;
+      });
+  }
   function logOut() {
-    this.router.push("/login");
     signOut(getAuth()).then(() => {
       removeProfile();
       this.router.push("/login");
     });
   }
-  return { register, login, logOut, errMsg };
+  function logAout() {
+    console.log(getAuth());
+  }
+  return { register, login, signInWithGoogle, logOut, logAout, errMsg };
 });
