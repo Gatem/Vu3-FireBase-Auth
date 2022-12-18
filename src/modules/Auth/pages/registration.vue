@@ -59,9 +59,5 @@ import { useGlobalStore } from "src/stores/global-store";
 const password = ref("");
 const email = ref("");
 const remember = ref(true);
-const { register } = useGlobalStore();
-
-const signInWithGoogle = () => {
-  // alertData("Works");
-};
+const { register, signInWithGoogle } = useGlobalStore();
 </script>

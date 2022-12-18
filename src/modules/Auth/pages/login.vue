@@ -65,5 +65,4 @@ const email = ref("");
 const remember = ref(true);
 const { login, signInWithGoogle } = useGlobalStore();
 const { errMsg } = storeToRefs(useGlobalStore());
-console.log(window.location.pathname.includes("login"));
 </script>
